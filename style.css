@@ -1,0 +1,84 @@
+/*
+ Theme Name:   WSZ Theme
+ Theme URI:    x 
+ Description:  x
+ Author:       Andrzej Marcinkowski
+ Author URI:   andrzej.marcinkowski@gmail.com
+ Template:     responsive
+ Version:      1.0.0
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  responsive-child
+*/
+@import url("../responsive/style.css");
+
+/* =Theme customization starts here */
+
+/*div.content{
+background-color: rgba(0, 0, 0, 1.0);
+}
+*/
+/* oddzialy */
+ul#menu-glowne-menu>li:nth-child(1)>.sub-menu {
+	display: inline-block;
+	width: 920px !important;
+}
+
+ul#menu-glowne-menu>li:nth-child(1)>.sub-menu li {
+	width: 33% !important;
+	float: left !important;
+}
+
+ul#menu-glowne-menu>li:nth-child(1)>.sub-menu li:nth-child(1) {
+	max-height: 29px !important;
+}
+
+ul#menu-glowne-menu>li:nth-child(1)>.sub-menu li:nth-child(3n) {
+	width: 28% !important;
+}
+
+/* poradnie */
+ul#menu-glowne-menu>li:nth-child(2)>.sub-menu {
+	display: inline-block;
+	width: 920px !important;
+}
+
+ul#menu-glowne-menu>li:nth-child(2)>.sub-menu li {
+	width: 33% !important;
+	float: left !important;
+}
+
+ul#menu-glowne-menu>li:nth-child(2)>.sub-menu li:nth-child(1) {
+	max-height: 29px !important;
+}
+
+ul#menu-glowne-menu>li:nth-child(2)>.sub-menu li:nth-child(3n) {
+	width: 24% !important;
+}
+
+/* wyglad */
+#content {
+	margin-top: 20px;
+}
+
+#widgets {
+	margin-top: 20px;
+}
+
+.sub-header-menu {
+	background-color: darkorange;
+}
+
+.sub-header-menu .current_page_item a {
+	background-color: orange;
+}
+
+*, *:before, *:after {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: none;
+	box-sizing: content-box;
+}
+
+#widgets a {
+	margin: 3px;
+	padding: 3px;
+}
