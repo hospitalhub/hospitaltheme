@@ -1,0 +1,13 @@
+{
+	"keywords" : [
+		"hospitaltheme"
+	],
+	"name" : "amarcinkowski/responsive-child",
+	"type" : "wordpress-theme",
+	"description" : "Hospital Theme",
+	"license" : "MIT",
+	"require" : {
+		"php" : ">=5.5",
+		"amarcinkowski/hospitalplugin" : "*"
+	}
+}
