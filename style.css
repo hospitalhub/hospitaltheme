@@ -4,12 +4,12 @@
  Description:  x
  Author:       Andrzej Marcinkowski
  Author URI:   andrzej.marcinkowski@gmail.com
- Template:     responsive
+ Template:     accesspress
  Version:      1.0.0
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
- Text Domain:  responsive-child
 */
-@import url("../responsive/style.css");
+
+@import url("../accesspress-parallax/style.css");
 
 /* =Theme customization starts here */
 
@@ -18,6 +18,8 @@ background-color: rgba(0, 0, 0, 1.0);
 }
 */
 /* oddzialy */
+
+/*
 ul#menu-glowne-menu>li:nth-child(1)>.sub-menu {
 	display: inline-block;
 	width: 920px !important;
@@ -36,7 +38,7 @@ ul#menu-glowne-menu>li:nth-child(1)>.sub-menu li:nth-child(3n) {
 	width: 28% !important;
 }
 
-/* poradnie */
+/* poradnie * /
 ul#menu-glowne-menu>li:nth-child(2)>.sub-menu {
 	display: inline-block;
 	width: 920px !important;
@@ -55,7 +57,7 @@ ul#menu-glowne-menu>li:nth-child(2)>.sub-menu li:nth-child(3n) {
 	width: 24% !important;
 }
 
-/* wyglad */
+/* wyglad * /
 #content {
 	margin-top: 20px;
 }
