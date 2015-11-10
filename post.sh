@@ -3,7 +3,12 @@ for CATEGORY in ${CATEGORIES[@]}; do
  for f in $CATEGORY/*;do
 	echo "adding $f"
 	n="${f/$CATEGORY\//}"
-	x=`wp post create "$f" --post_title="$n" --post_status=publish --porcelain`; 
+	if [ $CATEGORY == "page" ]; then
+		POST_TYPE="--post_type=page"
+	else
+		POST_TYPE=""
+	fi
+	x=`wp post create "$f" --post_title="$n" $POST_TYPE  --post_status=publish --porcelain`; 
 	echo "id $x"
 	i="${f/$CATEGORY/images\/$CATEGORY}"
 	if [ -e "$i".jpg ]; then
