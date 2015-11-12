@@ -1,7 +1,8 @@
 CATEGORIES=(team page slider)
 echo "no comments allowed"
 wp option set default_comment_status Disallow
-
+echo "flat media structure"
+wp option set uploads_use_yearmonth_folders 0
 for CATEGORY in ${CATEGORIES[@]}; do
  for f in $CATEGORY/*;do
 	echo "adding $f"
