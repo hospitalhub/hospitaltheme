@@ -1,4 +1,7 @@
 CATEGORIES=(team page slider)
+echo "no comments allowed"
+wp option set default_comment_status Disallow
+
 for CATEGORY in ${CATEGORIES[@]}; do
  for f in $CATEGORY/*;do
 	echo "adding $f"
