@@ -1,20 +1,26 @@
 CATEGORIES=(team page slider)
+# iterate over array
 for CATEGORY in ${CATEGORIES[@]}; do
- for f in $CATEGORY/*;do
-	echo "adding $f"
-	n="${f/$CATEGORY\//}"
-	if [ $CATEGORY == "page" ]; then
+ # iterate over files in directories
+ for f in $CATEGORY/* #$CATEGORY/**/*
+ do
+	directory="${f%\/*}"
+	title="${f#$directory\/}"
+	echo "adding post $title from $directory"
+	# if in folder page then add as a page (path starts with page)
+	if [ $CATEGORY == page* ]; then
 		POST_TYPE="--post_type=page"
 	else
 		POST_TYPE=""
 	fi
-	x=`wp post create "$f" --post_title="$n" $POST_TYPE  --post_status=publish --porcelain`; 
-	echo "id $x"
+	# x is post ID
+	x=`wp post create "$f" --post_title="$title" $POST_TYPE  --post_status=publish --porcelain`; 
+	echo "POST id $x"
 	i="${f/$CATEGORY/images\/$CATEGORY}"
-	if [ -e "$i".jpg ]; then
+	if [ -e "$i.jpg" ]; then
 		echo "pic: $i.jpg"
 		type="jpg"
-	elif [ -e "$i".png ]; then
+	elif [ -e "$i.png" ]; then
 		echo "pic: $i.png"
 		type="png"
 	else
@@ -47,7 +53,7 @@ wp option set acp_fontsizer_size_min	14
 wp option set acp_fontsizer_size_max	48
 echo "simple cookie notifi bar"
 echo '
-{"message":"Na stronie Wojew\u00f3dzkiego Szpitala Zespolonego u\u017cywamy plik\u00f3w COOKIE","ok-label":"Akceptuj","more-info-label":"","more-info-url":"","font-size":20,"text-align":"center","text-color":"#000000","background-color":"#ffffff","border-color":"#dd3333","ok-background-color":"#1e73be","button-border-color":"#dd3333","ok-text-color":"#eeee22","display-shadow":0}
+{"message":"Na stronie Wojew\u00f3dzkiego Szpitala Zespolonego u\u017cywamy plik\u00f3w COOKIE","ok-label":"Akceptuj","more-info-label":"","more-info-url":"","font-size":24,"text-align":"center","text-color":"#000000","background-color":"#ffffff","border-color":"#dd3333","ok-background-color":"#1e73be","button-border-color":"#dd3333","ok-text-color":"#ffffff","display-shadow":0}
 ' | wp option set scnb_settings --format=json
 TEAM_ID=`wp term list category --name=team --field=term_id`
 SLIDER_ID=`wp term list category --name=slider --field=term_id`
