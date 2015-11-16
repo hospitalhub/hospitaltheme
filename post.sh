@@ -1,4 +1,8 @@
 CATEGORIES=(team page slider)
+echo "no comments allowed"
+wp option set default_comment_status Disallow
+echo "flat media structure"
+wp option set uploads_use_yearmonth_folders 0
 # iterate over array
 for CATEGORY in ${CATEGORIES[@]}; do
  # iterate over files in directories
@@ -39,10 +43,6 @@ for CATEGORY in ${CATEGORIES[@]}; do
 done
 echo "PL lang -> accessible poetry plugin"
 cp src/acp-pl_PL.* ../hospitalpage/wp-content/languages/plugins/
-echo "no comments allowed"
-wp option set default_comment_status Disallow
-echo "flat media structure"
-wp option set uploads_use_yearmonth_folders 0
 echo "plugin settings"
 wp option set acp_toolbar_side	right
 wp option set acp_toolbar_icon_pos	middle
