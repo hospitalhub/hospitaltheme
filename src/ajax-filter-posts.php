@@ -1,24 +1,4 @@
 <?php
-use Hospitalplugin\WP\ScriptsAndStyles;
-
-$sas = new ScriptsAndStyles();
-$sas->init(HOSPITAL_PLUGIN_URL, array(''), array('bootstrap.min.js'), array('bootstrap.min.css'), 'page');
-
-include 'src/media_perms.php';
-
-// 
-
-function hospital_scripts() {
-//	wp_enqueue_style( 'fontawesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'__FILE__ );
-	wp_enqueue_script( 'control', get_stylesheet_directory_uri() . '/src/control.js', array('jquery'));
-}
-
-add_action( 'wp_enqueue_scripts', 'hospital_scripts' );
-
-
-
-
-
 /**
  * AJAX posts filter
  *
@@ -27,7 +7,7 @@ add_action( 'wp_enqueue_scripts', 'hospital_scripts' );
 // Enqueue script
 function ajax_filter_posts_scripts() {
   // Enqueue script
-  wp_register_script('afp_script', get_stylesheet_directory_uri() . '/src/ajax-filter-posts.js', false, null, false);
+  wp_register_script('afp_script', get_template_directory_uri() . '/tuts/ajax-filter-posts/ajax-filter-posts.js', false, null, false);
   wp_enqueue_script('afp_script');
 
   wp_localize_script( 'afp_script', 'afp_vars', array(
@@ -47,11 +27,7 @@ function ajax_filter_get_posts( $taxonomy ) {
   if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) )
     die('Permission denied');
 
-  if (isset( $_POST['taxonomy'] )) {
-  	$taxonomy = $_POST['taxonomy'];
-  } else {
-  	$taxonomy = 'oddzial';
-  }
+  $taxonomy = $_POST['taxonomy'];
 
   // WP Query
   $args = array(
@@ -85,27 +61,3 @@ function ajax_filter_get_posts( $taxonomy ) {
 
 add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
 add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
-
-function tags_filter() {
-    $term_parent = get_term_by('name', 'Szpital', 'category');
-    $parent_id = $term_parent->term_id;
-    $tax = 'category';
-    $args = array(
-	'child_of' => $parent_id
-    );
-    $terms = get_terms( $tax, $args );
-    $count = count( $terms );
- 
-    if ( $count > 0 ): ?>
-        <div class="post-tags">
-        <?php
-        foreach ( $terms as $term ) {
-            $term_link = get_term_link( $term, $tax );
-            echo '<a href="' . $term_link . '" class="tax-filter" title="' . $term->slug . '">' . $term->name . '</a> ';
-        } ?>
-        </div>
-    <?php endif;
-}
-
-
-?>
