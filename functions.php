@@ -69,7 +69,21 @@ function ajax_filter_get_posts( $taxonomy ) {
 
   if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
 
-    $result['response'][] = '<h2><a href="'.get_permalink().'">'. get_the_title().'</a></h2>' . get_the_excerpt();
+if(has_post_thumbnail()) {
+                        $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()),'portfolio-thumbnail');
+$img_src= esc_url($image[0]);
+} else {
+$img_src = get_template_directory_uri() . '/images/no-image.jpg';
+}
+    $result['response'][] = '<a href="'. get_the_permalink() .'" class="portfolio-list wow fadeInUp" data-wow-delay="'.$i.'"s">' .
+			'<div class="portfolio-image">
+                        <img style="height:150px;" src="'. $img_src . '" alt="'.get_the_title().'" />' . 
+				//'<img src="'.esc_url($image[0]).'" alt="'.the_title().'">
+                        '</div>
+			<h3 class="fa fa-stethoscope">' .get_the_title().'</h3>
+			</a>
+			' . wp_reset_postdata();
+//'<h2><a href="'.get_permalink().'">'. get_the_title().'</a></h2>' . get_the_excerpt();
     $result['status']     = 'success';
 
   endwhile; else:
@@ -101,7 +115,7 @@ function tags_filter() {
         <?php
         foreach ( $terms as $term ) {
             $term_link = get_term_link( $term, $tax );
-            echo '<a href="' . $term_link . '" class="tax-filter" title="' . $term->slug . '">' . $term->name . '</a> ';
+            echo '<a href="' . $term_link . '" class="tax-filter btn btn-primary" style="color:#fff;" title="' . $term->slug . '">' . $term->name . '</a> ';
         } ?>
         </div>
     <?php endif;
