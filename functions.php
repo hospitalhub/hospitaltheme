@@ -1,6 +1,7 @@
 <?php
 use Hospitalplugin\WP\ScriptsAndStyles;
 
+
 $sas = new ScriptsAndStyles();
 $sas->init(HOSPITAL_PLUGIN_URL, array(''), array('bootstrap.min.js'), array('bootstrap.min.css'), 'page');
 
@@ -14,8 +15,6 @@ function hospital_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'hospital_scripts' );
-
-
 
 
 
@@ -120,6 +119,15 @@ function tags_filter() {
         </div>
     <?php endif;
 }
+
+
+
+//translation
+add_action( 'after_setup_theme', 'my_child_theme_setup' );
+function my_child_theme_setup() {
+	load_child_theme_textdomain( 'my_child_theme', get_stylesheet_directory() . '/languages' );
+}
+
 
 
 ?>
