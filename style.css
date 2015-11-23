@@ -8,7 +8,6 @@
  Version:      1.0.0
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
 */
-
 @import url("../accesspress-parallax/style.css");
 
 /* =Theme customization starts here */
@@ -84,14 +83,12 @@ ul#menu-glowne-menu>li:nth-child(2)>.sub-menu li:nth-child(3n) {
 	margin: 3px;
 	padding: 3px;
 }*/
-
-
 div.karta {
-text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
-background-color: rgba(255,255,255,1); 
-color: #000; 
-margin: 4px;
-padding:4px;
+	text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
+	background-color: rgba(255, 255, 255, 1);
+	color: #000;
+	margin: 4px;
+	padding: 4px;
 }
 /* -moz-border-radius: 10px;
 -webkit-border-radius: 10px;
@@ -101,9 +98,13 @@ border-right: solid black 2px;
 border-bottom: solid black 2px; 
 border-left: solid white 2px;
 border-top: solid white 2px; */
-
 span.ikona {
-text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
-color:rgb(255,0,0);
-font-size:4em;
+	text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.15);
+	color: rgb(255, 0, 0);
+	font-size: 4em;
+}
+
+.spcaer {
+	width: 100%;
+	border: 0;
 }
