@@ -8,22 +8,44 @@
 
 <div class="content-area">
 
-<style>
-#map {
-  height: 100%;
-}
-.labels {
-    background-color: white;
-    border-style: solid;
-    border-width: 1px;
-}
-</style>
+	<div id="map" style="width: 100%; height: 300px;"></div>
+
+<?php
+
+$apiKey = "AIzaSyDNbphcf4j6hJzsgJciwIKlgAZukUaJ4ps";
+$map_page = "Mapa";
+
+$query = new WP_Query ( array (
+		'pagename' => $map_page 
+) );
+while ( $query->have_posts () ) :
+	$query->the_post ();
+	
+	$array = preg_split ( '/$\R?^/m', get_the_content () );
+	$first = true;
+	$position = array ();
+	$content = array ();
+	foreach ( $array as $value ) // loop over values
+{
+		list ( $title, $latlong, $rest ) = explode ( ";", $value );
+		if ($first) {
+			$center = $latlong;
+			$zoom = $title;
+			$first = false;
+		} else {
+			$position [$title] = $latlong;
+			$content [$title] = $rest;
+		}
+	}
+endwhile
+;
+wp_reset_postdata ();
+?>
 
 
-<div id="map" style="width:100%;height:300px;"></div>
-    <script>
+<script>
+
 function initMap() {
-
 
   // Specify features and elements to define styles.
   var styleArray = [
@@ -52,36 +74,6 @@ function initMap() {
   var position = new Array();
   var title = new Array();
   var content = new Array();
-
-	<?php  
-	
-			$apiKey = "AIzaSyDNbphcf4j6hJzsgJciwIKlgAZukUaJ4ps";
-			$map_page = "Mapa";
-	
-			
-            $query = new WP_Query( array( 'pagename' => $map_page ) );
-            while ( $query->have_posts() ) : $query->the_post();
-
-            $array = preg_split ('/$\R?^/m', get_the_content());
-            $first = true;
-            $position = array();
-            $content = array();
-            foreach($array as $value) //loop over values
-            {
-            	list($title,$latlong,$rest) = explode(";", $value);
-            	if ($first) {
-            		$center = $latlong;
-            		$zoom = $title;
-            		$first = false;
-            	} else {
-            		$position[$title] = $latlong;
-            		$content[$title] = $rest;
-            	}
-            }
-            
-	        endwhile;    
-	        wp_reset_postdata();
-	        ?>
 	
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: <?php echo $zoom ?>,
@@ -98,35 +90,34 @@ function initMap() {
     rotateControl: false
   });
 
-  <?php 
-  // skip 0 - map center
-  $counter = 0;
-  foreach ($position as $title => $marker) {
-  	echo " var marker".++$counter." = new google.maps.Marker({
- 		   position: ".$marker.",
- 		   title: \"".$title."\",
+<?php
+		// skip 0 - map center
+		$counter = 0;
+		foreach ( $position as $title => $marker ) {
+			echo " var marker" . ++ $counter . " = new google.maps.Marker({
+ 		   position: " . $marker . ",
+ 		   title: \"" . $title . "\",
  		   map: map,
  		   icon: image,
  		   animation: google.maps.Animation.DROP,
- 	  });
- 	";
-  	echo "	  var infowindow".$counter." = new google.maps.InfoWindow({
- 		    content: '<div id=\"content\" style=\"width:100px;\">".$content[$title]."</div>'
- 	  });
- 	  	marker".$counter.".addListener('click', function() {
- 		 	infowindow".$counter.".open(map, marker".$counter.");
- 		 });
-		";
-
-   }
-  ?>
-
-  
+ 	       });
+ 	       ";
+			echo "	  var infowindow" . $counter . " = new google.maps.InfoWindow({
+ 		    content: '<div id=\"content\" style=\"width:100px;\">" . $content [$title] . "</div>'
+ 	        });
+ 	  	    marker" . $counter . ".addListener('click', function() {
+ 		 	infowindow" . $counter . ".open(map, marker" . $counter . ");
+ 		    });
+		   ";
+		}
+?>
 }
 
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $apiKey; ?>&signed_in=true&callback=initMap"></script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=<?php echo $apiKey; ?>&signed_in=true&callback=initMap"></script>
 
-		</div>
+</div>
 
-	</div><!-- #primary -->
+</div>
+<!-- #primary -->

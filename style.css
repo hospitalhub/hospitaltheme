@@ -108,3 +108,13 @@ span.ikona {
 	width: 100%;
 	border: 0;
 }
+
+#map {
+	height: 100%;
+}
+
+.labels {
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+}
