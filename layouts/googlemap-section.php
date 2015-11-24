@@ -68,7 +68,7 @@ function initMap() {
             $content = array();
             foreach($array as $value) //loop over values
             {
-            	list($title,$latlong,$rest) = split(";", $value);
+            	list($title,$latlong,$rest) = explode(";", $value);
             	if ($first) {
             		$center = $latlong;
             		$zoom = $title;
