@@ -124,3 +124,7 @@ span.ikona {
     font-size: 24px;
     padding: 15px 15px;
 }
+
+.blog-list .blog-excerpt span {
+    font-size: 32px;   
+}
