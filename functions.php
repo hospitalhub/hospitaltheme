@@ -43,8 +43,9 @@ $result = array();
 function ajax_filter_get_posts( $taxonomy ) {
 
   // Verify nonce
-  if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) )
+  if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) ) {
     die('Permission denied');
+  }
 
   if (isset( $_POST['taxonomy'] )) {
   	$taxonomy = $_POST['taxonomy'];
@@ -67,26 +68,25 @@ function ajax_filter_get_posts( $taxonomy ) {
   $query = new WP_Query( $args );
 
   if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
-
 if(has_post_thumbnail()) {
                         $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()),'portfolio-thumbnail');
 $img_src= esc_url($image[0]);
 } else {
-$img_src = get_template_directory_uri() . '/images/no-image.jpg';
+$img_src = get_stylesheet_directory_uri(). '/images/' . $taxonomy . '.jpg';
 }
-    $result['response'][] = '<a href="'. get_the_permalink() .'" class="portfolio-list wow fadeInUp" data-wow-delay="'.$i.'"s">' .
+    $result['response'][] = '<a href="'. get_the_permalink() .'" class="portfolio-list wow fadeInUp">' .
 			'<div class="portfolio-image">
-                        <img style="height:150px;" src="'. $img_src . '" alt="'.get_the_title().'" />' . 
+                        <img src="'. $img_src . '" alt="'.get_the_title().'" />' . 
 				//'<img src="'.esc_url($image[0]).'" alt="'.the_title().'">
                         '</div>
-			<h3 class="fa fa-stethoscope">' .get_the_title().'</h3>
+			<h3 class="fa fa-stethoscope"> ' .get_the_title().'</h3>
 			</a>
 			' . wp_reset_postdata();
 //'<h2><a href="'.get_permalink().'">'. get_the_title().'</a></h2>' . get_the_excerpt();
     $result['status']     = 'success';
 
   endwhile; else:
-    $result['response'] = '<h2>No posts found</h2>';
+    $result['response'] = '<h2>Brak danych</h2>';
     $result['status']   = '404';
   endif;
  
