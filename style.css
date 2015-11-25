@@ -146,3 +146,7 @@ span.ikona {
 	top: 0;
 	background: url(images/portfolio-text-bg.png) repeat-x top left;
 }
+
+a.tax-filter {
+	margin-top: 6px;
+}
