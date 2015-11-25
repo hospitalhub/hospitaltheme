@@ -140,3 +140,9 @@ span.ikona {
 .blog-list .blog-excerpt span {
     font-size: 32px;   
 }
+
+.portfolio-list h3 {
+	font-size: 17px;
+	top: 0;
+	background: url(images/portfolio-text-bg.png) repeat-x top left;
+}
