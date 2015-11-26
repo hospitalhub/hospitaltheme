@@ -161,3 +161,8 @@ text.get-text.get-text-0 {
 text.get-text.get-text-1 {
 	font-size: 28px !important;
 }
+
+svg path.link {
+    stroke: #333 !important;
+    stroke-width: 18;
+}

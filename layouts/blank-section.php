@@ -7,8 +7,7 @@
 ?>
 
 	<div class="content-area blank-section">
-
-
+	
 	</div><!-- #primary -->
 
 

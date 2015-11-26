@@ -11,7 +11,11 @@ include 'src/media_perms.php';
 
 function hospital_scripts() {
 //	wp_enqueue_style( 'fontawesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'__FILE__ );
+if(is_page('sample-page')) {
 	wp_enqueue_script( 'control', get_stylesheet_directory_uri() . '/src/control.js', array('jquery'));
+    wp_enqueue_script('getorgscript', get_stylesheet_directory_uri() . '/js/getorgchart.js', array('jquery'));
+    wp_enqueue_style( 'getorgstyle', get_stylesheet_directory_uri() . '/js/getorgchart.css' );
+}
 }
 
 add_action( 'wp_enqueue_scripts', 'hospital_scripts' );
@@ -129,5 +133,58 @@ function my_child_theme_setup() {
 }
 
 
+
+
+
+
+/**
+ * 
+ * 
+ *  ORG CHART ENDPOINT
+ * 
+ * 
+ */
+
+
+/**
+ * Rewrite an endpoint to get GIFs.
+ */
+function orgchart_endpoint() {
+	add_rewrite_tag( '%orgchart%', '([^&]+)' );
+	add_rewrite_rule( 'orgchart/([^&]+)/?', 'index.php?orgchart=$matches[1]', 'top' );
+
+}
+add_action( 'init', 'orgchart_endpoint' );
+
+/**
+ * Pass through the data to the endpoint.
+ */
+function orgchart_endpoint_data() {
+
+	global $wp_query;
+
+	$gif_tag = $wp_query->get( 'orgchart' );
+
+	if ( ! $gif_tag ) {
+		return;
+	}
+
+	$gif_data = array();
+
+	$args = array(
+			'post_type'      => 'page',
+			'pagename' => 'Schemat Organizacyjny'
+	);
+	$gif_query = new WP_Query( $args );
+	if ( $gif_query->have_posts() ) : while ( $gif_query->have_posts() ) : $gif_query->the_post();
+	$img_id = get_post_thumbnail_id();
+	$img = wp_get_attachment_image_src( $img_id, 'full' );
+	$gif_data = json_decode(get_the_content());
+	endwhile; wp_reset_postdata(); endif;
+
+	wp_send_json( $gif_data );
+
+}
+add_action( 'template_redirect', 'orgchart_endpoint_data' );
 
 ?>
