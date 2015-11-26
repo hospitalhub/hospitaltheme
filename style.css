@@ -89,6 +89,7 @@ div.karta {
 	color: #000;
 	margin: 4px;
 	padding: 4px;
+	min-height: 200px;
 }
 /* -moz-border-radius: 10px;
 -webkit-border-radius: 10px;
@@ -149,4 +150,14 @@ span.ikona {
 
 a.tax-filter {
 	margin-top: 6px;
+}
+
+/* get org chart
+*/
+text.get-text.get-text-0 {
+	font-size: 46px !important;
+}
+
+text.get-text.get-text-1 {
+	font-size: 28px !important;
 }
