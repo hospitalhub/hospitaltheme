@@ -11,7 +11,7 @@ include 'src/media_perms.php';
 
 function hospital_scripts() {
 //	wp_enqueue_style( 'fontawesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'__FILE__ );
-if(is_page('sample-page')) {
+if(is_page('schemat-organizacyjny')) {
 	wp_enqueue_script( 'control', get_stylesheet_directory_uri() . '/src/control.js', array('jquery'));
     wp_enqueue_script('getorgscript', get_stylesheet_directory_uri() . '/js/getorgchart.js', array('jquery'));
     wp_enqueue_style( 'getorgstyle', get_stylesheet_directory_uri() . '/js/getorgchart.css' );
@@ -118,7 +118,7 @@ function tags_filter() {
         <?php
         foreach ( $terms as $term ) {
             $term_link = get_term_link( $term, $tax );
-            echo '<a href="' . $term_link . '" class="tax-filter btn btn-primary" style="color:#fff;" title="' . $term->slug . '">' . $term->name . '</a> ';
+            echo '<a href="' . $term_link . '" class="tax-filter btn btn-primary btn-xs" style="color:#fff;" title="' . $term->slug . '">' . $term->name . '</a> ';
         } ?>
         </div>
     <?php endif;
