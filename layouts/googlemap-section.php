@@ -12,7 +12,6 @@
 
 <?php
 
-$apiKey = "AIzaSyDNbphcf4j6hJzsgJciwIKlgAZukUaJ4ps";
 $map_page = "Mapa";
 
 $query = new WP_Query ( array (
@@ -31,6 +30,7 @@ while ( $query->have_posts () ) :
 		if ($first) {
 			$center = $latlong;
 			$zoom = $title;
+			$apiKey = $rest;
 			$first = false;
 		} else {
 			$position [$title] = $latlong;
