@@ -168,21 +168,16 @@ svg path.link {
 }
 
 li.cat-item a {
-	color: red;
-	background: white;
-	padding: 6px;
-	border-radius: 4px;
-	border: 4px solid red;
-	margin: 3px !important;
- font-size: 16px;
+	padding: 2px;
+	background: #900;
+	border-radius: 2px;
+	border: 1px solid black;
 }
 li ul li.cat-item a {
-	color: white;
-	background: red;
+	background: #e00;
 	padding: 2px;
 	border-radius: 2px;
-	border: 2px solid white;
- font-size: 12px;
+	border: 1px solid black;
 }
 
 li {
