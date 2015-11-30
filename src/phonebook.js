@@ -5,6 +5,7 @@ jQuery(document)
 
 $(function () {
 
+	
 $.fn.bootstrapTable.locales['pl-PL'] = {
         formatLoadingMessage: function () {
             return 'Ładowanie, proszę czekać...';
@@ -60,7 +61,7 @@ $.fn.bootstrapTable.locales['pl-PL'] = {
      });
     
 function getHeight() {
-        return $(window).height() - 250;
+        return $(window).height() - 280;
     }
 // var $table = $('#table');
 //    $(function () {
