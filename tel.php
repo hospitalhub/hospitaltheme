@@ -20,7 +20,7 @@ get_header();
         <h1>Książka telefoniczna</h1>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalTable">
-	Odpal książkę
+		Odpal książkę
         </button>
         <div class="modal fade" style="z-index:123123;" id="modalTable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">

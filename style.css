@@ -169,21 +169,24 @@ svg path.link {
 
 li.cat-item a {
 	color: #fff !important;
+	font-weight: 300;
+	font-family: sans-serif;
+	font-size: 18px;
 	padding: 2px;
 	background: #900;
 	border-radius: 2px;
 	border: 1px solid black;
 }
 li ul li.cat-item a {
+	font-size: 14px;
 	background: #e00;
-	padding: 2px;
 	border-radius: 2px;
 	border: 1px solid black;
 }
 
-li {
- display: inline-block;
+li.cat-item {
+ display: inline;
 }
-ul {
- display: inline-block;
+ul.children {
+ display: inline;
 }
