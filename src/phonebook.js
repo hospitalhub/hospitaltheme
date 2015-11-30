@@ -4,87 +4,64 @@ jQuery(document)
 				function($) {
 
 $(function () {
-var data = [{
-    "name": "bootstrap-table",
-        "stargazers_count": "10",
-        "forks_count": "122",
-        "description": "An extended Bootstrap table"
-}, {
-    "name": "multiple-select",
-        "stargazers_count": "288",
-        "forks_count": "20",
-        "description": "A jQuery plugin to select multiple elements with checkboxes :)"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "32",
-        "forks_count": "11",
-        "description": "Show/hide password plugin for twitter bootstrap."
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "3",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "scutech-redmine 1",
-        "stargazers_count": "50",
-        "forks_count": "3",
-        "description": "Redmine notification tools for chrome extension."
-}];
+
+$.fn.bootstrapTable.locales['pl-PL'] = {
+        formatLoadingMessage: function () {
+            return 'Ładowanie, proszę czekać...';
+        },
+        formatRecordsPerPage: function (pageNumber) {
+            return pageNumber + ' rekordów na stronę';
+        },
+        formatShowingRows: function (pageFrom, pageTo, totalRows) {
+            return 'Wyświetlanie rekordów od ' + pageFrom + ' do ' + pageTo + ' z ' + totalRows;
+        },
+        formatSearch: function () {
+            return 'Szukaj';
+        },
+        formatNoMatches: function () {
+            return 'Niestety, nic nie znaleziono';
+        },
+        formatRefresh: function () {
+            return 'Odśwież';
+        },
+        formatToggle: function () {
+            return 'Przełącz';
+        },
+        formatColumns: function () {
+            return 'Kolumny';
+        }
+    };
+
+    $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['pl-PL']);
+
 
     $('#table').bootstrapTable({
+	height: getHeight(),
+	columns: [
+                    {
+			title: 'Nazwa',
+                        field: 'name',
+                        align: 'center',
+                        valign: 'middle',
+                        sortable: true,
+                    }, {
+			title: 'Komórka org.',
+                        field: 'group',
+                        align: 'center',
+                        valign: 'middle',
+                        sortable: true,
+                    }, {
+                        title: 'Telefon',
+                        field: 'number',
+                        align: 'center'
+                    }
+                ],
         data: data
      });
-
+    
+function getHeight() {
+        return $(window).height() - 250;
+    }
 // var $table = $('#table');
 //    $(function () {
 //        $('#modalTable').on('shown.bs.modal', function () {
