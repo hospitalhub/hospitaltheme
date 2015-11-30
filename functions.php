@@ -112,6 +112,8 @@ function tags_filter() {
     $parent_id = $term_parent->term_id;
     $tax = 'category';
     $args = array(
+    'orderby'           => 'ID',
+    'order'             => 'ASC',
 	'child_of' => $parent_id
     );
     $terms = get_terms( $tax, $args );
