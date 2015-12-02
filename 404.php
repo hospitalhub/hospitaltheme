@@ -14,8 +14,6 @@ get_header(); ?>
 				<header class="page-header">
 					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'hospitaltheme' ); ?></h1>
 				</header><!-- .page-header -->
-
-				
 			</section><!-- .error-404 -->
 
 		</main><!-- #main -->

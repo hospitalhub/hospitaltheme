@@ -6,19 +6,9 @@
  */
 
 get_header();
-?>
-
-
-<!-- LAYOUT -->
-<?php
-/**
- * The template for displaying all Parallax Templates.
- *
- * @package accesspress_parallax
- */
-
-		tags_filter();
-		wp_reset_postdata();
+// LAYOUT
+tags_filter();
+wp_reset_postdata();
 ?>
 
 	<div class="blog-listing clearfix">
@@ -28,10 +18,7 @@ get_header();
     </div>
 	</div>
 	
-<!-- END LAYOUT -->
-
-
 <?php
-
+// LAYOUT END
 get_footer();
 ?>
