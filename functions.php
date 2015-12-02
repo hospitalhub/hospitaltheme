@@ -132,14 +132,6 @@ function tags_filter() {
 
 
 
-//translation
-add_action( 'after_setup_theme', 'my_child_theme_setup' );
-function my_child_theme_setup() {
-	load_child_theme_textdomain( 'my_child_theme', get_stylesheet_directory() . '/languages' );
-}
-
-
-
 
 
 
@@ -192,5 +184,16 @@ function orgchart_endpoint_data() {
 
 }
 add_action( 'template_redirect', 'orgchart_endpoint_data' );
+
+
+
+
+//translation
+add_action( 'after_setup_theme', 'hospitaltheme_setup' );
+function hospitaltheme_setup() {
+	load_child_theme_textdomain( 'hospitaltheme', get_stylesheet_directory() . '/languages' );
+}
+
+
 
 ?>
