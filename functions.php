@@ -3,7 +3,7 @@ use Hospitalplugin\WP\ScriptsAndStyles;
 
 
 $sas = new ScriptsAndStyles();
-$sas->init(HOSPITAL_PLUGIN_URL, array(''), array('bootstrap.min.js','bootstrap-table.min.js', 'getorgchart.js'), array('bootstrap.min.css','bootstrap-table.min.css', 'getorgchart.css'), 'page');
+$sas->init(HOSPITAL_PLUGIN_URL, array(''), array('bootstrap.min.js','bootstrap-table.min.js', 'getorgchart.js', 'slick.min.js'), array('bootstrap.min.css','bootstrap-table.min.css', 'getorgchart.css', 'slick.css', 'slick-theme.css'), 'page');
 
 include 'src/media_perms.php';
 

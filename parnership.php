@@ -13,42 +13,41 @@ get_header();
 ?>
 <?php
 
- $querystr = "
-    SELECT $wpdb->posts.* 
-    FROM $wpdb->posts, $wpdb->postmeta
-    WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
-    AND $wpdb->postmeta.meta_key = 'tag' 
-    AND $wpdb->postmeta.meta_value = 'Partnerzy' 
-    AND $wpdb->posts.post_status = 'publish' 
-    AND $wpdb->posts.post_type = 'post'
-    AND $wpdb->posts.post_date < NOW()
-    ORDER BY $wpdb->posts.post_date DESC
- ";
+$args = array(
+	'post_type' => 'post',
+	'category_name' => 'Fundusze+Partnerzy'
+	);
+// The Query
+query_posts( $args );
 
- $pageposts = $wpdb->get_results($querystr, OBJECT);
- ?>
+// The Loop
+echo '<div class="partnerzy">';
+while ( have_posts() ) : the_post();
+    echo '<div>';
+//    the_title();
+    if(has_post_thumbnail()) {
+          $image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()),'portfolio-thumbnail');
+$img_src= esc_url($image[0]);
+} else {
+$img_src = get_stylesheet_directory_uri(). '/images/x.jpg';
+}
+   echo '<a href="'. get_the_permalink() .'" class="portfolio-list wow fadeInUp"><div class="portfolio-image"><img src="'. $img_src . '" alt="'.get_the_title().'" /></div>';
 
- <?php if ($pageposts): ?>
- <?php global $post; ?>
- <?php foreach ($pageposts as $post): ?>
- <?php setup_postdata($post); ?>
- 
- <div class="post" id="post-<?php the_ID(); ?>">
- <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-    <?php the_title(); ?></a></h2>
-    <small><?php the_time('F jS, Y') ?> <!-- by <?php the_author() ?> --></small>
-    <div class="entry">
-       <?php the_content('Read the rest of this entry »'); ?>
-    </div>
-    <p class="postmetadata">Posted in <?php the_category(', ') ?> | <?php edit_post_link('Edit', '', ' | '); ?>  
-    <?php comments_popup_link('No Comments »', '1 Comment »', '% Comments »'); ?></p>
- </div>
- <?php endforeach; ?>
- <?php else : ?>
-    <h2 class="center">Error</h2>
-    <p class="center">404</p>
-    <?php include (TEMPLATEPATH . "/searchform.php"); ?>
- <?php endif; ?>
+    echo '</div>';
+endwhile;
+echo '</div>';
+// Reset Query
+wp_reset_query();
+
+?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.partnerzy').slick({
+	infinite: true
+      });
+    });
+  </script>
 
  
 <?php
