@@ -31,9 +31,9 @@ $img_src= esc_url($image[0]);
 } else {
 $img_src = get_stylesheet_directory_uri(). '/images/x.jpg';
 }
-   echo '<a href="'. get_the_permalink() .'" class="portfolio-list wow fadeInUp"><div class="portfolio-image"><img src="'. $img_src . '" alt="'.get_the_title().'" /></div>';
-
-    echo '</div>';
+   echo '<a href="'. get_the_permalink() .'" >';
+   echo '<img src="'. $img_src . '" alt="'.get_the_title().'" />';
+   echo '</div>';
 endwhile;
 echo '</div>';
 // Reset Query
@@ -42,11 +42,21 @@ wp_reset_query();
 ?>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-      $('.partnerzy').slick({
-	infinite: true
-      });
-    });
+
+var $j = jQuery.noConflict();
+
+$j(function(){
+  $j('.partnerzy').slick({
+	infinite: true,
+	dots: true,
+	speed: 300,
+	slidesToShow: 1,
+	centerMode: true,
+	variableWidth: true,
+	autoplay: true,
+	autoplaySpeed: 2000,
+  });
+});
   </script>
 
  
