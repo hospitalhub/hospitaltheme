@@ -6,13 +6,11 @@ $sas->init ( HOSPITAL_PLUGIN_URL, array (
 		'' 
 ), array (
 		'bootstrap.min.js',
-		'bootstrap-table.min.js',
-		'slick.min.js' 
+// 		'bootstrap-table.min.js',
+// 		'slick.min.js' 
 ), array (
 		'bootstrap.min.css',
-		'bootstrap-table.min.css',
-		'slick.css',
-		'slick-theme.css' 
+		'bootstrap-table.min.css'
 ), 'page' );
 
 include 'src/media_perms.php';
@@ -33,8 +31,11 @@ function hospital_scripts() {
 		) );
 	}
 	
-	if (is_page ( 'ksiazka-telefoniczna' )) {
+	if (is_page ( 'fundusze' )) {
+		wp_enqueue_style ( 'slick', get_stylesheet_directory_uri () . '/js/slick.css' );
+		wp_enqueue_style ( 'slick1', get_stylesheet_directory_uri () . '/js/slick-theme.css' );
 	}
+	
 }
 add_action ( 'wp_enqueue_scripts', 'hospital_scripts' );
 
