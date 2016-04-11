@@ -14,12 +14,64 @@ get_header();
 <div class="mid-content clearfix">
         <div id="primary" class="content-area">
                 <main id="main" class="site-main" role="main">
-<?php query_posts( 'category_name=Zamówienia&posts_per_page=-1' ); ?>
+<?php 
+	$tagi = array();
+
+	if( empty($_POST["zp_rok"]) ) {
+	 $rok = date("Y"); 
+	} else {
+	 $rok = $_POST["zp_rok"];
+        }
+	//array_push($tagi,$rok);
+
+	if ( !empty($_POST["zp_typ"]) ) {
+		array_push($tagi,$_POST["zp_typ"]);
+	} 
+
+	if ( !empty($_POST["zp_co"]) )  {
+	  if (intval($rok) >= 2016 ) {
+	    array_push($tagi,$_POST["zp_co"]);
+	  } else {
+	    echo "<span style=color:red;>*wybór dostawy/usługi dostępny od 2016 r.</span>";
+	  }
+	} 
+	
+	echo "Wyświetlane <b>";
+	foreach($tagi as $tag) {
+	   echo $tag . " ";
+	}
+	echo "</b>";
+
+	query_posts( array('year' => $rok, 'category_name'=>'Zamówienia', 'posts_per_page'=>'-1', 'tag_slug__and'=> $tagi )); 
+?>
 
 <?php 
 // Check if there are any posts to display
 if ( have_posts() ) : ?>
 
+
+<form name="customer_details" method="POST" onsubmit="return form_validation()" action="ogloszenia-przetargowe">
+<select name="zp_rok">
+<?php
+foreach (range(date("Y"),2010,-1) as $year) {
+	echo "<option value=\"$year\">$year</option>";
+}
+?>
+</select>
+<select name="zp_typ">
+ <option disabled selected value> -- wybierz by wyszukać -- </option>
+ <option value="ogloszenia-przetargowe">Ogłoszenia Przetargowe (powyżej 30 tys. euro)</option>
+ <option value="do-30-tys-euro">do 30 tys. euro</option>
+ <option value="do-14-tys-euro">do 14 tys. euro (2014 i wcześniej)</option>
+ <option value="inne-konkursy">Inne Konkursy</option>
+</select>
+<select name="zp_co">
+ <option disabled selected value> -- wybierz by wyszukać -- </option>
+ <option value="dostawy">Dostawy</option>
+ <option value="uslugi">Usługi</option>
+</select>
+<input type="submit" value="OK"/>
+</form>
 
  <table id="table"
  			data-toggle="table"
@@ -44,7 +96,7 @@ if ( have_posts() ) : ?>
 while ( have_posts() ) : the_post(); ?>
 <tr>
 <td>  <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"> </a> <?php the_title(); ?> </td>
-<td>  <?php the_time('d M Y') ?> </td>
+<td>  <?php the_time('d-m-Y') ?> </td>
 <td> <div class="entry"><?php the_content(); ?></div> </td>
 <td> <?php  $cats = get_the_terms(get_the_ID(),'post_tag'); 
 foreach($cats as $cat) {
@@ -61,7 +113,7 @@ foreach($cats as $cat) {
 
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-	$('#table').bootstrapTable('destroy');
+//	$('#table').bootstrapTable('destroy');
 });
 </script>
 
