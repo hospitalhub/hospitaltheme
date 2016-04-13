@@ -36,7 +36,7 @@ get_header();
 	  }
 	} 
 	
-	echo "Wyświetlane <b>";
+	echo "Wyświetlane <b> . $rok . "r. ";
 	foreach($tagi as $tag) {
 	   echo $tag . " ";
 	}
@@ -69,6 +69,7 @@ foreach (range(date("Y"),2010,-1) as $year) {
  <option disabled selected value> -- wybierz by wyszukać -- </option>
  <option value="dostawy">Dostawy</option>
  <option value="uslugi">Usługi</option>
+ <option value="roboty-budowlane">Roboty Budowlane</option>
 </select>
 <input type="submit" value="OK"/>
 </form>
