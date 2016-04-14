@@ -32,11 +32,11 @@ get_header();
 	  if (intval($rok) >= 2016 ) {
 	    array_push($tagi,$_POST["zp_co"]);
 	  } else {
-	    echo "<span style=color:red;>*wybór dostawy/usługi dostępny od 2016 r.</span>";
+	    echo "<span style=color:red;>*wybór dostawy/usłu/roboty dostępny od 2016 r.</span>";
 	  }
 	} 
 	
-	echo "Wyświetlane <b> . $rok . "r. ";
+	echo "<b" . $rok . "r. ";
 	foreach($tagi as $tag) {
 	   echo $tag . " ";
 	}
@@ -50,23 +50,23 @@ get_header();
 if ( have_posts() ) : ?>
 
 
-<form name="customer_details" method="POST" onsubmit="return form_validation()" action="ogloszenia-przetargowe">
-<select name="zp_rok">
+<form name="details" method="POST" action="zamowienia">
+<select name="zp_rok" class="btn btn-warning dropdown-toggle">
 <?php
 foreach (range(date("Y"),2010,-1) as $year) {
 	echo "<option value=\"$year\">$year</option>";
 }
 ?>
 </select>
-<select name="zp_typ">
- <option disabled selected value> -- wybierz by wyszukać -- </option>
- <option value="ogloszenia-przetargowe">Ogłoszenia Przetargowe (powyżej 30 tys. euro)</option>
+<select name="zp_typ" class="btn btn-warning dropdown-toggle">
+ <option disabled selected value> -- wybierz -- </option>
+ <option value="ogloszenia-przetargowe">O. Przetargowe</option>
  <option value="do-30-tys-euro">do 30 tys. euro</option>
  <option value="do-14-tys-euro">do 14 tys. euro (2014 i wcześniej)</option>
  <option value="inne-konkursy">Inne Konkursy</option>
 </select>
-<select name="zp_co">
- <option disabled selected value> -- wybierz by wyszukać -- </option>
+<select name="zp_co" class="btn btn-warning dropdown-toggle">
+ <option disabled selected value> -- wybierz -- </option>
  <option value="dostawy">Dostawy</option>
  <option value="uslugi">Usługi</option>
  <option value="roboty-budowlane">Roboty Budowlane</option>
@@ -119,7 +119,7 @@ jQuery(document).ready(function($) {
 </script>
 
 <?php else: ?>
-<p>Brak wpisów.</p>
+<p>Brak wpisów <a href="zamowienia">Wstecz</a>.</p>
 <?php endif; ?>
 
                 </main><!-- #main -->
