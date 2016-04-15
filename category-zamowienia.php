@@ -59,14 +59,14 @@ foreach (range(date("Y"),2010,-1) as $year) {
 ?>
 </select>
 <select name="zp_typ" class="btn btn-warning dropdown-toggle">
- <option disabled selected value> -- wybierz -- </option>
- <option value="ogloszenia-przetargowe">O. Przetargowe</option>
+ <option disabled selected value> Zamówienia o wartości </option>
+ <option value="ogloszenia-przetargowe">powyżej 30 tys. euro</option>
  <option value="do-30-tys-euro">do 30 tys. euro</option>
  <option value="do-14-tys-euro">do 14 tys. euro (2014 i wcześniej)</option>
- <option value="inne-konkursy">Inne Konkursy</option>
+ <option value="inne-konkursy">inne</option>
 </select>
 <select name="zp_co" class="btn btn-warning dropdown-toggle">
- <option disabled selected value> -- wybierz -- </option>
+ <option disabled selected value> Rodzaj zamówienia </option>
  <option value="dostawy">Dostawy</option>
  <option value="uslugi">Usługi</option>
  <option value="roboty-budowlane">Roboty Budowlane</option>
