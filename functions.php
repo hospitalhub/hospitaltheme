@@ -217,7 +217,9 @@ function send_email( $post_id ) {
 		//sends email
 		//$ret = wp_mail($email, $subject, $message );
 		//saves file
-		file_put_contents("/var/www/~stronka/SIWZ/potwierdzenie/".$date->format('Y-m-d_H-i')."__" . $sanitized . ".html",$message);
+		$filename = "/var/www/~stronka/SIWZ/potwierdzenie/".$date->format('Y-m-d_H-i')."__" . $sanitized . ".html";
+		file_put_contents($filename,$message);
+		chmod($filename, 0666);
 	}
 }
 
