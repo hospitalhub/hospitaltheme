@@ -202,7 +202,7 @@ function hospitaltheme_setup() {
 
 add_action( 'save_post', 'send_email' );
 function send_email( $post_id ) {
-//	in_category ( 'zamowienia' , $post_id ) {
+	in_category ( 'zamowienia' , $post_id ) {
 		$post_url = get_permalink( $post_id );
 		$post_title = get_the_title( $post_id );
 		$sanitized = mb_strimwidth( sanitize_title( str_replace('/','_', $post_title) ) , 0, 25, "_");
@@ -218,7 +218,7 @@ function send_email( $post_id ) {
 		//$ret = wp_mail($email, $subject, $message );
 		//saves file
 		file_put_contents("/var/www/~stronka/SIWZ/potwierdzenie/".$date->format('Y-m-d_H-i')."__" . $sanitized . ".html",$message);
-//	}
+	}
 }
 
 
