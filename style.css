@@ -190,3 +190,14 @@ li.cat-item {
 ul.children {
  display: inline;
 }
+
+
+/* MENU sideSlide  */
+
+div.sideSlideSlideToggleNegative {
+ z-index: 999 !important;
+}
+
+#sideSlideMenu img {
+ margin: auto;
+}
