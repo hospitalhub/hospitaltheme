@@ -196,7 +196,9 @@ ul.children {
 
 div.sideSlideSlideToggleNegative {
  z-index: 999 !important;
+ left: 10px !important;
 }
+
 
 #sideSlideMenu img {
  margin: auto;
