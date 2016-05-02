@@ -11,6 +11,9 @@ include 'src/media_perms.php';
 
 function hospital_scripts() {
 //	wp_enqueue_style( 'fontawesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'__FILE__ );
+// bootstrap 3 shortcodes POPOVER dla menu
+wp_enqueue_script( 'bo.otstrap-shortcodes-popover', BS_SHORTCODES_URL . 'js/bootstrap-shortcodes-popover.js', array( 'jquery' ), false, true );
+wp_enqueue_script( 'bootrap-popover-show', get_stylesheet_directory_uri() . '/src/popover.js', array('jquery'));
 if(is_page('schemat-organizacyjny')) {
 	wp_enqueue_script( 'orgchart', get_stylesheet_directory_uri() . '/src/orgchart.js', array('jquery'));
     //wp_enqueue_script('getorgscript', get_stylesheet_directory_uri() . '/js/getorgchart.js', array('jquery'));
