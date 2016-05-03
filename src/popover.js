@@ -13,7 +13,7 @@ function menuText(show) {
 function showPopover(id, msg) {
 	$('#' + id).attr("data-content",msg);
 	$('#' + id).attr("data-placement","bottom");
-	$('#' + id).attr("data-delay","400");
+	$('#' + id).attr("data-delay","700");
 	$('#' + id).attr("data-title","MENU");
 	$('#' + id).attr("data-html","true");
 	$('#' + id).popover('show');
@@ -24,8 +24,7 @@ function showPopover(id, msg) {
 
 if($(".bx-slider").length > 0) {
 	// pokaz info
-	console.log('show');
-	var id = 'sideSlideToggle';
+	var id = 'leftSideSlideMenu';
 	var message = 'Otwórz menu klikając na ikonie powyżej.'; // <button type="button" id="close' + id +'" class="close">ukryj</button>';
 	showPopover(id,message);
 } else {
@@ -33,5 +32,7 @@ if($(".bx-slider").length > 0) {
 	menuText(true);
 	setTimeout(menuText, 2500);
 }
+
+$('#simple-menu').sidr();
 
 });
