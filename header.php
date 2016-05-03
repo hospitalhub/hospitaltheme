@@ -18,10 +18,54 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js"></script>
 <![endif]-->
 
-<?php wp_head(); ?>
+<?php wp_head();?>
 </head>
 
 <body <?php body_class(); ?>>
+
+<div id="leftSideSlideMenu" >
+	<a id="simple-menu" href="#sidr"><i class="fa fa-bars"></i></a>
+</div>
+
+<div id="sidr">
+<img src="<?php echo( get_header_image() ); ?>"
+
+<?php
+$menu = mainmenu();
+?>
+
+<div class="row">
+        <ul class="nav nav-sidebar">
+	<?php foreach($menu as $menuitem) { ?>
+            <li>
+                <div class="panel-group" id="accordion" style="margin-bottom: 0px;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="padding: 0px 16px;">
+                           <a data-toggle="collapse" data-parent="#accordion" style="padding: 8px;" href="#<?php echo $menuitem[1] ?>">
+                             <h2 class="panel-title" style="font-size: 18px;"><?php echo $menuitem[2] ?></h2>
+                          </a>
+                        </div>
+                        <div id="<?php echo $menuitem[1] ?>" class="panel-collapse collapse">
+                            <div class="panel-body" style="padding: 0px;">
+				<?php $items = mainmenuitems($menuitem[1]); ?>
+                                <ul>
+				    <?php foreach($items as $item) { ?>
+                                    <li><a class="fa fa-ambulance" style="font-size:16px;" href="<?php echo $item[0] ?>"> <?php echo shortLongNames($item[1]) ?></a></li>
+				    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+	<?php } ?>
+            <li><a href="">Another nav item</a></li>
+        </ul>
+    </div>
+
+</div>
+
 <div id="page" class="hfeed site">
 
 	<?php 
