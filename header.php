@@ -28,7 +28,9 @@
 </div>
 
 <div id="sidr">
-<img src="<?php echo( get_header_image() ); ?>"
+<a href="<?php echo site_url(); ?>">
+<img src="<?php echo( get_header_image() ); ?>">
+</a>
 
 <?php
 $menu = mainmenu();

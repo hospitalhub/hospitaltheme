@@ -218,14 +218,14 @@ ul.children {
 
 .sidr ul li ul li a {
  text-overflow: ellipsis;
- width: 260px;
+ width: 280px;
  overflow: hidden;
  white-space: nowrap;
- padding-left: 5px;
+ padding-left: 15px;
 }
 
 .sidr ul li ul li a:hover {
- padding-left: 15px;
+ padding-left: 25px;
  font-size: 17px !important;
  background: #eeeeee;
  color: #111111;
