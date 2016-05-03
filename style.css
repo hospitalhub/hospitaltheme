@@ -198,46 +198,65 @@ ul.children {
  margin: auto;
 }
 
-#leftSideSlideMenu {
+i.fa.fa-bars {
+color: #fff;
+font-size: 2em;
+font-weight: bold;
+text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+}
+
+.leftSideSlideMenu {
  position:fixed; 
  left:50px; 
  top:50px; 
- background:white; 
  z-index: 99999; 
  padding: 4px; 
  margin: 4px; 
  font-size: 32px;
+ -webkit-transition: 0.1s ease-in-out;
+ -moz-transition: 0.1s ease-in-out;
+ -o-transition: 0.1s ease-in-out;
+ transition: 0.1s ease-in-out;
 }
 
-.panel-heading :hover {
+.leftSideSlideMenu:hover {
+ -webkit-transform: scale(1.1);
+ -moz-transform: scale(1.1);
+ -o-transform: scale(1.1);
+ -ms-transform: scale(1.1);
+ transform: scale(1.1);
+}
+
+.panel:hover {
  padding-left: 20px;
- background: #eeeeee;
- color: #111111;
- font-weight: bold;
 }
 
 .sidr ul li ul li a {
+ font-family: Tahoma, Geneva, sans-serif;
  text-overflow: ellipsis;
- width: 280px;
  overflow: hidden;
  white-space: nowrap;
  padding-left: 15px;
+ -webkit-transition: 0.2s ease-in-out;
+ -moz-transition: 0.2s ease-in-out;
+ -o-transition: 0.2s ease-in-out;
+ transition: 0.2s ease-in-out;
 }
 
 .sidr ul li ul li a:hover {
- padding-left: 25px;
- font-size: 17px !important;
+ font-size: 16px !important;
+ padding-left: 5px;
  background: #eeeeee;
  color: #111111;
  font-weight: bold;
  overflow: visible;
  white-space: normal;
+ -webkit-transform: translate(-10px,0);
+ -moz-transform: translate(-10px,0);
+ -o-transform: translate(-10px,0);
+ -ms-transform: translate(-10px,0);
+ transform: translate(-10px,0);
 }
-
-
-
-
-
 
 
 

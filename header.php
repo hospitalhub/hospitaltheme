@@ -23,7 +23,7 @@
 
 <body <?php body_class(); ?>>
 
-<div id="leftSideSlideMenu" >
+<div id="leftSideSlideMenu" class="leftSideSlideMenu" >
 	<a id="simple-menu" href="#sidr"><i class="fa fa-bars"></i></a>
 </div>
 
@@ -43,7 +43,7 @@ $menu = mainmenu();
 	<?php foreach($menu as $menuitem) { ?>
                     <div class="panel panel-default" style="border:none;">
                         <div class="panel-heading" style="padding: 0px 16px;">
-                           <a data-toggle="collapse" data-parent="#accordion" style="padding: 8px;" href="#<?php echo $menuitem[1] ?>">
+                           <a data-toggle="collapse" data-parent="#accordion" style="padding: 3px;" href="#<?php echo $menuitem[1] ?>">
                              <h2 class="panel-title" style="font-size: 18px;"><?php echo $menuitem[2] ?></h2>
                           </a>
                         </div>
@@ -52,7 +52,7 @@ $menu = mainmenu();
 				<?php $items = mainmenuitems($menuitem[1]); ?>
                                 <ul>
 				    <?php foreach($items as $item) { ?>
-                                    <li><a class="fa fa-ambulance" style="font-size:16px;" href="<?php echo $item[0] ?>"> <?php echo shortLongNames($item[1]) ?></a></li>
+                                    <li><a class="fa" style="font-size:15px;" href="<?php echo $item[0] ?>"><i class="fa fa-ambulance"></i> <?php echo shortLongNames($item[1]) ?></a></li>
 				    <?php } ?>
                                 </ul>
                             </div>
@@ -62,7 +62,6 @@ $menu = mainmenu();
 	<?php } ?>
                 </div>
             </li>
-            <li><a href="">Another nav item</a></li>
         </ul>
     </div>
 
