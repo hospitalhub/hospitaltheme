@@ -216,12 +216,22 @@ ul.children {
  font-weight: bold;
 }
 
-.sidr ul li ul li a:hover {
+.sidr ul li ul li a {
+ text-overflow: ellipsis;
+ width: 260px;
+ overflow: hidden;
+ white-space: nowrap;
  padding-left: 5px;
+}
+
+.sidr ul li ul li a:hover {
+ padding-left: 15px;
  font-size: 17px !important;
  background: #eeeeee;
  color: #111111;
  font-weight: bold;
+ overflow: visible;
+ white-space: normal;
 }
 
 
