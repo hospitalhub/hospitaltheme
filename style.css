@@ -194,12 +194,43 @@ ul.children {
 
 /* MENU sideSlide  */
 
-div.sideSlideSlideToggleNegative {
- z-index: 999 !important;
- left: 10px !important;
-}
-
-
-#sideSlideMenu img {
+#sidr > img {
  margin: auto;
 }
+
+#leftSideSlideMenu {
+ position:fixed; 
+ left:50px; 
+ top:50px; 
+ background:white; 
+ z-index: 99999; 
+ padding: 4px; 
+ margin: 4px; 
+ font-size: 32px;
+}
+
+.panel-heading :hover {
+ padding-left: 20px;
+ background: #eeeeee;
+ color: #111111;
+ font-weight: bold;
+}
+
+.sidr ul li :hover {
+ font-size: 19px;
+ background: #eeeeee;
+ color: #111111;
+ font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
