@@ -36,10 +36,10 @@ $menu = mainmenu();
 
 <div class="row">
         <ul class="nav nav-sidebar">
-	<?php foreach($menu as $menuitem) { ?>
             <li>
                 <div class="panel-group" id="accordion" style="margin-bottom: 0px;">
-                    <div class="panel panel-default">
+	<?php foreach($menu as $menuitem) { ?>
+                    <div class="panel panel-default" style="border:none;">
                         <div class="panel-heading" style="padding: 0px 16px;">
                            <a data-toggle="collapse" data-parent="#accordion" style="padding: 8px;" href="#<?php echo $menuitem[1] ?>">
                              <h2 class="panel-title" style="font-size: 18px;"><?php echo $menuitem[2] ?></h2>
@@ -57,9 +57,9 @@ $menu = mainmenu();
                         </div>
                     </div>
 
+	<?php } ?>
                 </div>
             </li>
-	<?php } ?>
             <li><a href="">Another nav item</a></li>
         </ul>
     </div>
