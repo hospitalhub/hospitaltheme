@@ -3,8 +3,6 @@ jQuery(document).ready(function($) {
 function menuText(show) {
 	if (show) {
 		$("i.fa.fa-bars").text(" menu");
-		$("i.fa.fa-bars").css({"border-color": "#FF0000", 
-             "border-width":"1px", "border-style":"solid", "padding": "5px"});
 	} else {
 		$("i.fa.fa-bars").text("");
 	}
