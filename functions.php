@@ -10,10 +10,13 @@ include 'src/media_perms.php';
 // 
 
 function hospital_scripts() {
-//	wp_enqueue_style( 'fontawesome', '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'__FILE__ );
 // bootstrap 3 shortcodes POPOVER dla menu
 wp_enqueue_script( 'bo.otstrap-shortcodes-popover', BS_SHORTCODES_URL . 'js/bootstrap-shortcodes-popover.js', array( 'jquery' ), false, true );
 wp_enqueue_script( 'bootrap-popover-show', get_stylesheet_directory_uri() . '/src/popover.js', array('jquery'));
+//
+wp_enqueue_script( 'sidr', '//cdn.jsdelivr.net/jquery.sidr/2.2.1/jquery.sidr.min.js', array('jquery') );
+wp_enqueue_style( 'sidr', '//cdn.jsdelivr.net/jquery.sidr/2.2.1/stylesheets/jquery.sidr.light.min.css');
+//
 if(is_page('schemat-organizacyjny')) {
 	wp_enqueue_script( 'orgchart', get_stylesheet_directory_uri() . '/src/orgchart.js', array('jquery'));
     //wp_enqueue_script('getorgscript', get_stylesheet_directory_uri() . '/js/getorgchart.js', array('jquery'));
@@ -33,7 +36,7 @@ add_action( 'wp_enqueue_scripts', 'hospital_scripts' );
  * AJAX posts filter
  *
  */
-
+// TODO XXX REMOVE FILTER
 // Enqueue script
 function ajax_filter_posts_scripts() {
   // Enqueue script
@@ -48,9 +51,12 @@ function ajax_filter_posts_scripts() {
 }
 add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
 
-$result = array();
 
+
+
+// XXX TODO REMOVE
 // Script for getting posts
+$result = array();
 function ajax_filter_get_posts( $taxonomy ) {
 
   // Verify nonce
@@ -107,9 +113,12 @@ $img_src = get_stylesheet_directory_uri(). '/images/' . $taxonomy . '.jpg';
   die();
 }
 
+// XXX TODO remove both lines
 add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
 add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
 
+
+// XXX TODO REMOVE @deprecated
 function tags_filter() {
     $term_parent = get_term_by('name', 'Szpital', 'category');
     $parent_id = $term_parent->term_id;
@@ -134,7 +143,78 @@ function tags_filter() {
 }
 
 
+// left side slide menu
+function mainmenu() {
+    $term_parent = get_term_by('name', 'Szpital', 'category');
+    $parent_id = $term_parent->term_id;
+    $tax = 'category';
+    $args = array(
+    'orderby'           => 'ID',
+    'order'             => 'ASC',
+        'child_of' => $parent_id
+    );
+    $terms = get_terms( $tax, $args );
+    $count = count( $terms );
 
+    $menu = array();
+    if ( $count > 0 ) {
+        foreach ( $terms as $term ) {
+            $term_link = get_term_link( $term, $tax );
+            //echo $term_link . $term->slug . $term->name;
+            array_push($menu, array($term_link, $term->slug, $term->name));
+        } 
+    }
+   return $menu;
+}
+
+
+function shortLongNames( $name ) {
+  $name = str_replace('Oddział ','O/',$name);
+  $name = str_replace('Poradnia ','P/',$name);
+  $name = str_replace('Zakład ','Z/',$name);
+  return $name;
+}
+
+function mainmenuitems( $taxonomy ) {
+
+// XXX RM ?
+//  if (isset( $_POST['taxonomy'] )) {
+//        $taxonomy = $_POST['taxonomy'];
+//  } else {
+//        $taxonomy = 'oddzial';
+//  }
+
+  // WP Query
+  $args = array(
+    'tag'            => $taxonomy,
+    'post_type'      => 'post',
+    'posts_per_page' => -1,
+  );
+
+  // If taxonomy is not set, remove key from array and get all posts
+  // XXX  rm?
+  if( !$taxonomy ) {
+    unset( $args['tag'] );
+  }
+
+  $query = new WP_Query( $args );
+  $result = array();
+
+  if ( $query->have_posts() ) : 
+	while ( $query->have_posts() ) : $query->the_post();
+     		array_push($result, array( get_the_permalink(), get_the_title()));
+                wp_reset_postdata();
+  endwhile; 
+//  else:
+//    $result['response'] = '<h2>Brak danych</h2>';
+//    $result['status']   = '404';
+  endif;
+
+ // $result = json_encode($result);
+  return $result;
+
+//  die();
+}
 
 
 
