@@ -44,7 +44,7 @@ $menu = mainmenu();
                     <div class="panel panel-default" style="border:none;">
                         <div class="panel-heading" style="padding: 0px 16px;">
                            <a data-toggle="collapse" data-parent="#accordion" style="padding: 3px;" href="#<?php echo $menuitem[1] ?>">
-                             <h2 class="panel-title" style="font-size: 18px;"><?php echo $menuitem[2] ?></h2>
+                             <h2 class="panel-title" style="font-size: 18px;"><?php echo $menuitem[2] ?> <i style="vertical-align:middle; color: #ddd;" class="fa fa-arrow-down"></i></h2>
                           </a>
                         </div>
                         <div id="<?php echo $menuitem[1] ?>" class="panel-collapse collapse">
