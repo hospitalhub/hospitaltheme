@@ -60,6 +60,23 @@ $menu = mainmenu();
                     </div>
 
 	<?php } ?>
+	<!-- XXX TODO PRZENIESC OGŁOSZENIA DO MENU -->
+                    <div class="panel panel-default" style="border:none;">
+                        <div class="panel-heading" style="padding: 0px 16px;">
+                           <a data-toggle="collapse" data-parent="#accordion" style="padding: 3px;" href="#ogloszenia">
+                             <h2 class="panel-title" style="font-size: 18px;">Ogłoszenia <i style="vertical-align:middle; color: #ddd;" class="fa fa-arrow-down"></i></h2>
+                          </a>
+                        </div>
+                        <div id="ogloszenia" class="panel-collapse collapse">
+                            <div class="panel-body" style="padding: 0px;">
+                                <ul>
+                                    <li><a class="fa" style="font-size:15px;" href="http://szpital.kalisz.pl/wp/category/zamowienia"><i class="fa fa-ambulance"></i> Zamówienia Publiczne</a></li>
+                                    <li><a class="fa" style="font-size:15px;" href="http://szpital.kalisz.pl/wp/category/ogloszenia"><i class="fa fa-ambulance"></i> Ogłoszenia</a></li>
+                                    <li><a class="fa" style="font-size:15px;" href="http://szpital.kalisz.pl/wp/category/konkursy-ofert"><i class="fa fa-ambulance"></i> Konkursy Ofert</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </li>
         </ul>
