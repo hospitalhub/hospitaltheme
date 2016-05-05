@@ -203,7 +203,7 @@ function mainmenuitems( $taxonomy ) {
 
   if ( $query->have_posts() ) : 
 	while ( $query->have_posts() ) : $query->the_post();
-     		array_push($result, array( get_the_permalink(), get_the_title()));
+     		array_push($result, array( get_the_permalink(), get_the_title(), get_the_ID()));
                 wp_reset_postdata();
   endwhile; 
 //  else:

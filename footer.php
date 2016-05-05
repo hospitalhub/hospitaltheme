@@ -32,7 +32,33 @@
 				</div>
 				<?php endif; ?>
 
-				<div class="footer-block">
+			<div class="footer-block" >
+				<h2 class="widget-title">Fundusze</h2>
+
+					<div id="carousel-example-generic2" class="carousel slide" data-interval="2000" data-ride="carousel" >
+  <!-- Wskaźniki w postaci kropek -->
+  <div class="carousel-inner">
+  <!-- Slajdy -->
+					   <?php $items = mainmenuitems("Partnerzy"); 
+						$active = true;
+                                    		foreach($items as $item) { ?>
+    <div class="item <?php if ($active) { echo "active"; $active = false; } ?>">
+	<a href="<?php echo $item[0] ?>"><?php echo get_the_post_thumbnail($item[2]); ?> </a>
+    </div>
+<?php						}
+						?>
+
+  </div>
+
+  <!-- Strzałki do przewijania -->
+  <a class="left carousel-control" href="#carousel-example-generic2" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic2" data-slide="next">
+    <span class="icon-next"></span>
+  </a>
+</div>
+		<br/><i class="fa fa-list-ol"> Kliknij na logo, by poznać szczegóły</i>
 				</div>
             </div>
 			</div>
