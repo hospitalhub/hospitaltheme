@@ -71,7 +71,7 @@ function initMap() {
   ];
 
   // TODO change to relative link
-  var image = 'http://127.0.0.1:8000/wp/../uploads/favicon.png';
+  var image = 'http://szpital.kalisz.pl/wp/../uploads/favicon.png';
   var position = new Array();
   var title = new Array();
   var content = new Array();
