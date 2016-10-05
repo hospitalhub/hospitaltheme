@@ -7,7 +7,7 @@
 ?>
 
 	<div class="content-area blank-section">
-	
+		mapa niedostępna w trybie lokalnym
 	</div><!-- #primary -->
 
 
